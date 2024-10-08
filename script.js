@@ -45,3 +45,37 @@ console.log(lastPost);
 // Better solution using top-level await
 const lastPost2 = await getLastPost();
 console.log(lastPost2);
+
+/////////////////////////////////////////////////////
+
+/** The Module Pattern - The way modules were implemented before */
+
+/* The aim is to encapsulate private data and expose a public API */
+
+// Use a IIFE
+const ShoppingCart2 = (function () {
+  const cart = [];
+  const shippingCost = 10;
+  const totalPrice = 237;
+  const totalQuantity = 23;
+
+  const addToCart = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(
+      `${quantity} ${product} added to cart (shipping cost is ${shippingCost})`
+    );
+  };
+
+  const orderStock = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(`${quantity} ${product} ordered from supplier`);
+  };
+
+  // What is publicly exposed
+  return { addToCart, cart, totalPrice, totalQuantity };
+})();
+
+ShoppingCart2.addToCart('apple', 4);
+ShoppingCart2.addToCart('pizza', 2);
+console.log(ShoppingCart2);
+console.log(ShoppingCart2.shippingCost);
