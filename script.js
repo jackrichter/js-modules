@@ -18,3 +18,30 @@ add('bread', 3);
 add('apple', 4);
 
 console.log(cart);
+
+/** Top level await (allowed only in modules) */
+
+// It blocks
+// console.log('Start');
+// const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+// const data = await res.json();
+// console.log(data);
+// console.log('Finish');
+
+const getLastPost = async function () {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await res.json();
+
+  return { title: data.at(-1).title, text: data.at(-1).body };
+};
+
+// Remember! The returned value of an async function is a Promise. So this won't work.
+const lastPost = getLastPost();
+console.log(lastPost);
+
+// Not very "clean" Solution
+// lastPost.then(last => console.log(last));
+
+// Better solution using top-level await
+const lastPost2 = await getLastPost();
+console.log(lastPost2);
