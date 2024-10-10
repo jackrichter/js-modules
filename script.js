@@ -37,14 +37,14 @@ const getLastPost = async function () {
 
 // Remember! The returned value of an async function is a Promise. So this won't work.
 const lastPost = getLastPost();
-console.log(lastPost);
+// console.log(lastPost);
 
 // Not very "clean" Solution
 // lastPost.then(last => console.log(last));
 
 // Better solution using top-level await
 const lastPost2 = await getLastPost();
-console.log(lastPost2);
+// console.log(lastPost2);
 
 /////////////////////////////////////////////////////
 
@@ -77,5 +77,31 @@ const ShoppingCart2 = (function () {
 
 ShoppingCart2.addToCart('apple', 4);
 ShoppingCart2.addToCart('pizza', 2);
-console.log(ShoppingCart2);
-console.log(ShoppingCart2.shippingCost);
+// console.log(ShoppingCart2);
+// console.log(ShoppingCart2.shippingCost);
+
+/////////////////////////////////////////////////////
+
+/** Lodash */
+
+// We want to use the cloneDeep (for cloning objects) function from the cloneDeep.js file in lodash
+import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+
+//One deeply nested object
+const state = {
+  cart: [
+    { product: 'bread', quantity: 5 },
+    { product: 'pizza', quantity: 5 },
+  ],
+  user: { loggedIn: true },
+};
+
+// Shallow object copy
+const stateClone = Object.assign({}, state);
+// Deep cloning
+const stateDeppClone = cloneDeep(state);
+
+state.user.loggedIn = false;
+console.log(stateClone);
+
+console.log(stateDeppClone);
