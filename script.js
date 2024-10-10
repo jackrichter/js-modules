@@ -43,7 +43,7 @@ const lastPost = getLastPost();
 // lastPost.then(last => console.log(last));
 
 // Better solution using top-level await
-const lastPost2 = await getLastPost();
+// const lastPost2 = await getLastPost();
 // console.log(lastPost2);
 
 /////////////////////////////////////////////////////
