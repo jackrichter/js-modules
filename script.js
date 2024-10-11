@@ -112,3 +112,13 @@ console.log(stateDeppClone);
 if (module.hot) {
   module.hot.accept();
 }
+
+// Test of Babel
+// class Person {
+//   greeting = 'Hej';
+//   constructor(name) {
+//     this.name = name;
+//     console.log(`${tis.greeting}, ${this.name}`);
+//   }
+// }
+// const jonas = new Person('Jonas');
